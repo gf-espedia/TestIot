@@ -1,0 +1,43 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:iot="sap.ui.iot.controls"
+	xmlns:iotele="sap.ui.iot.elements" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="com.espedia.controller.Main" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}" backgroundDesign="Solid" showFooter="false">
+				<HBox width="100%" height="100%">
+					<items>
+						<VBox width="25%" direction="Column">
+							<items>
+								<iot:IoTThingList headerText="Thing List"
+									initialSortColumn="DYN_ENT_espedia1_iotae_com_espedia_simplemaintenance__Equipment_Base_Data/Equipment_Base_Data.Description"
+									initialSortOrder="Ascending" rowSelect="onOpenChart" controlType="List"
+									things="{path:'/Things',parameters:{expand:' DYN_ENT_espedia1_iotae_com_espedia_simplemaintenance__Equipment_Base_Data, HierarchyElements, DYN_ENT_espedia1_iotae_com_espedia_simplemaintenance__ethicaHAT2, DYN_ENT_com_sap_appiot_eventtypes__StandardEventType '}}">
+									<iot:columns>
+										<iotele:IoTThingListColumnHeader text="{i18n>thingList1}"/>
+										<iotele:IoTThingListColumnHeader text="{i18n>thingList2}"/>
+									</iot:columns>
+									<iot:things>
+										<iotele:IoTThingListElement thingImage="{ThingId}" highSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/High}"
+											lowSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Low}"
+											mediumSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Medium}">
+											<iotele:cells>
+												<iotele:IoTThingListColumn
+													text="{DYN_ENT_espedia1_iotae_com_espedia_simplemaintenance__Equipment_Base_Data/Equipment_Base_Data.Description}"/>
+												<iotele:IoTThingListColumn text="{DYN_ENT_espedia1_iotae_com_espedia_simplemaintenance__Equipment_Base_Data/Equipment_Base_Data.EID}"/>
+											</iotele:cells>
+										</iotele:IoTThingListElement>
+									</iot:things>
+								</iot:IoTThingList>
+							</items>
+						</VBox>
+						<VBox width="75%" direction="Column">
+							<items>
+								<iot:IoTChart id="idChart" noOfHours="12" isSliderVisible="true" visible="false"/>
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
