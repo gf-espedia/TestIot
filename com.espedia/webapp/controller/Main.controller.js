@@ -7,17 +7,14 @@ sap.ui.define([
 
 		onInit: function () {
 			//inizializzo i dati 
-			debugger;
 			this.bRenderChart = true;
 			this.bNavMp = false;
-			//this.sThingId = oEvent.getParameter("arguments").thingId;
 			var oModel = new sap.ui.model.json.JSONModel();
 			var oChart = this.byId("idChart");
 			oChart.setModel(oModel, "chartModel");
 		},
 
 		onOpenChart: function (oEvent) {
-			debugger;
 			var thing = oEvent.getParameters().thing;
 			var sPath = thing.getPath();
 			this.sThingId = this.getID(sPath);
@@ -35,7 +32,6 @@ sap.ui.define([
 		},
 
 		_renderChart: function (oChart, sThingId) {
-			debugger;
 			// Workaround as of now because onAfterRendering does not get called for the second time
 			if (!this.bRenderChart) {
 				oChart.setEventsVisible(false);
@@ -44,7 +40,6 @@ sap.ui.define([
 		},
 
 		onAfterRendering: function () {
-			debugger;
 			if (this.bRenderChart) {
 				var oChart = this.byId("idChart");
 				this.bRenderChart = false;
